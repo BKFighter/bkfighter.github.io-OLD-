@@ -73,7 +73,7 @@ function doneChc(){
     
   }else{
    if(sideBarSel){
-    document.getElementById("nav-bar").innerHTML="<h2>Navigation</h2><a href='http://bkfighter.free-hoster.net/' class='nav-btn'>Home</a><h2>Games</h2><a href='http://bkfighter.free-hoster.net/tilight.html' class='nav-btn'>Tilight</a><br /><a href='http://bkfighter.free-hoster.net/penaltyshootout.html' class='nav-btn'>Penalty Shootout</a><br /><a href='http://bkfighter.free-hoster.net/scratch.html' class='nav-btn'>Scratch</a>";
+    document.getElementById("nav-bar").innerHTML="<h2>Navigation</h2><a href='http://bkfighter.github.io/' class='nav-btn'>Home</a><h2>Games</h2><a href='http://bkfighter.github.io/tilight.html' class='nav-btn'>Tilight</a><br /><a href='http://bkfighter.github.io/penaltyshootout.html' class='nav-btn'>Penalty Shootout</a><br /><a href='http://bkfighter.github.io/scratch.html' class='nav-btn'>Scratch</a>";
    }
     
     

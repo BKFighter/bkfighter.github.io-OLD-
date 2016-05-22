@@ -1,7 +1,7 @@
 var x;
 var y;
 var sideBarSel=false;
-var length=50;
+var length=30;
 
 
 

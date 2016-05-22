@@ -1,0 +1,132 @@
+body {
+  
+  background-color: #FFFFFF;
+  
+}
+
+/*   HEADINGS   */
+
+h1 {
+ 
+  font-family: 'Roboto';
+  font-style : italic;
+  font-weight: 400;
+  line-height: 60px;
+  
+}
+
+h2 {
+
+  font-family: 'Roboto';
+  font-style : normal;
+  font-weight: 300;
+  
+
+}
+
+p {
+
+  font-family: 'Roboto';
+  font-style : normal;
+  font-weight: 300;
+
+}
+
+/*   TEXT   */
+
+.title{
+  
+  color:#ECEFF1;
+  background-color: #2196F3;
+  width:100%;
+  position: fixed;
+  text-align: center;
+  margin:-10px;
+  text-align: center;
+  padding: 5px;
+  height: 60px;
+  top: 0px;
+  left: 0px;
+  
+}
+
+.important {
+  
+  text-align:center;
+  height:40px;
+  color:#37474F
+  
+}
+
+/*   BUTTONS   */
+
+.flat-btn {
+  
+  color:#37474F;
+  background-color:#FFFFFF;
+  border:0px;
+  font-family: 'Roboto';
+  font-style : normal;
+  font-weight: 300;
+  height: 25px;
+  width: 150px;
+  font-size:15pt;
+  text-decoration: underline;
+  
+}
+.flat-btn:hover{
+
+  font-size:18pt
+
+}
+
+/*   Navigation Sidebar   */
+
+#nav-bar {
+  
+  position: fixed;
+  width: 150px; 
+  height: 500px;
+  top: 60px;
+  left: 0px;
+  background-color: #2196F3;
+  color:#ECEFF1;
+  text-align: center;
+  
+}
+
+.nav-btn {
+
+  color:#ECEFF1;
+  border:0px;
+  font-family: 'Roboto';
+  font-style : normal;
+  font-weight: 300;
+  height: 25px;
+  width: 150px;
+  font-size:15pt;
+  text-decoration: underline;
+
+
+}
+.nav-btn:hover {
+
+  font-weight:600;
+
+}
+
+/*   LINKS   */
+.bl-lnk:link {
+
+  color: #2196F3
+
+}
+.bl-lnk:visited {
+
+  color: #2196F3
+}
+.bl-lnk:hover {
+
+  font-weight:500;
+
+}

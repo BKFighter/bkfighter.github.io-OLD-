@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="side-nav.js"></script>
+  <link rel="stylesheet" href="all-docs.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <title>Penalty Shootout</title>
+
+</head>
+<body onload="navIn()"> 
+<h1 class="title">
+    Penalty Shootout
+  </h1>
+    <div id="nav-bar">
+      
+    </div>
+    <br /><br />
+
+  <h2 id="score" class="important" style="text-align:left;margin-left:160px;margin-right:160px">
+    Move mouse-pointer to aim, and click to shoot. The goalkeeper (red) will try to block your shot. Your shots will not be perfectly precise, and will take some time to find where it will aim, to emulate a real penalty shootout.
+  </h2>
+<br />
+  <canvas id="game" width="500" height="500" style="border:1px solid #000000;margin-left:180px;margin-top:10px;border:5px solid #2196F3;border-radius:1%">
+  </canvas>
+
+  <script>
+  var c = document.getElementById("game");
+  var ctx = c.getContext("2d");
+  var ballX;
+  var ballY;
+  var ballZ;
+  var ballXVel;
+  var ballYVel;
+  var ballZVel;
+  var mx=0;
+  var my=0;
+  var oldx;
+  var oldy;
+  var kick = 0;
+  var gkX = 250;
+  var gkY = 300;
+  var gkXVel = 0;
+  var gkYVel = 0;
+  var score = 0
+    
+    
+    document.addEventListener('mousedown', onMouseUpdate, false);
+
+
+    function onMouseUpdate(e) {
+      if (!kick){
+      kick = !kick
+      mx = e.pageX-180;
+      my = e.pageY;
+        ballXVel = ((mx-250)+(Math.random()*60-30))/20;
+        ballYVel = ((my-380)+(Math.random()*60-30))/15;
+      ballZVel = -2;
+      renderWorld();
+      goalieLoop();
+      ballLoop();
+      
+      }
+    }
+    
+    
+    function renderWorld(){
+      
+    ctx.fillStyle = "#3355FF";
+    ctx.fillRect(0,0,500,380);
+    ctx.strokeRect(50,100,400,300);
+    ctx.fillStyle = "#00DD00";
+    ctx.fillRect(0,380,500,120);
+     renderGoalie(); 
+    }
+    function renderBall(){
+   
+      ctx.beginPath();
+      ctx.arc(ballX,ballY,ballZ,0,2*Math.PI);
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fill();
+      ctx.stroke(); 
+      ctx.closePath();
+      
+    }
+    function renderGoalie(){
+      ctx.fillStyle = "#FF2222";
+      ctx.fillRect(gkX-40,gkY-87.5,80,175);
+      
+      ctx.beginPath();
+      ctx.arc(gkX-50,gkY-40,15,0,2*Math.PI);
+      ctx.fillStyle = "#FF2222";
+      ctx.fill();
+      ctx.stroke(); 
+      ctx.closePath();
+      
+      ctx.beginPath();
+      ctx.arc(gkX+50,gkY-40,15,0,2*Math.PI);
+      ctx.fillStyle = "#FF2222";
+      ctx.fill();
+      ctx.stroke(); 
+      ctx.closePath();
+
+    }
+    
+    
+    function reset(){
+      
+      ballX=250;
+      ballY=380;
+      ballZ=40;
+      ballXVel=0;
+      ballYVel=0;
+      ballZVel=0; 
+      
+    }
+    
+    
+    function detectKick(){
+      
+      oldx=mx;
+      oldy=my;
+      
+      loopDetectKick();
+      
+    }
+    function loopDetectKick(){
+      
+      if(oldx==mx&&oldy==my){
+        
+        setTimeout(loopDetectKick(),100);
+        
+      }else{
+        
+        
+        renderWorld();
+        setUpPhysics();
+        
+      }
+      
+    }
+    
+    
+  function setUpPhysics(){
+    
+    var ballXVel;
+    var ballYVel;
+    var ballZVel;
+    
+  }
+    function applyPhysics(){
+      
+    ballX = ballX + ballXVel;
+    ballY = ballY + ballYVel;
+    ballZ = ballZ + ballZVel;
+    ballXVel = ballXVel * 0.96;
+    ballYVel = ballYVel+0.9;
+    ballZVel = ballZVel * 0.91;
+    if(ballY>380){
+      ballY = 380;
+      ballYVel=0-(ballYVel/2);
+    }
+    renderWorld();
+    renderBall();
+      if(ballZ>20){
+        setTimeout(ballLoop, 100)
+      }else{
+        
+        if(ballX<gkX+40&&ballX>gkX-40&&ballY<gkY+87.5&&ballY>gkY-87.5){
+          
+        blocked();
+          
+        }else{
+          
+          if(ballX<450&&ballX>50&&ballY>100&&ballY<400){
+            
+          goal();
+            
+          }else{
+            blocked();
+          }
+          
+        }
+        
+      }
+      
+    }
+    function ballLoop(){
+      
+      applyPhysics();
+      
+    }
+    
+    function goalieLoop(){
+      
+      if(ballY<gkY-60&&gkY>290){
+        
+        gkYVel = -6-(Math.sqrt(score/10));
+        
+      }
+      
+      gkY = gkY + gkYVel;
+      gkX = gkX + gkXVel;
+      gkYVel = gkYVel + 0.6
+      gkXVel = gkXVel * 0.6
+      if(gkY>300){
+        
+       gkY = 300;
+       gkYVel = 0;
+        
+      }
+      if(ballX<gkX){
+        
+        gkXVel = -(4+(Math.sqrt(score/10)));
+        
+      }
+      if(ballX>gkX){
+
+        gkXVel = 4+(Math.sqrt(score/10));
+
+      }
+      
+      goalieLP();
+      
+    }
+    function goalieLP(){
+      
+    if(kick){  
+     setTimeout(goalieLoop, 100)
+    }
+      
+    }
+    
+    function blocked(){
+      
+      document.getElementById("score").innerHTML = "Game Over. Score: "+score+" <button class='flat-btn' onclick='replay()'>Play again?</button>";
+      
+    }
+    function goal(){
+      
+      score = score + 1;
+      kick = 0;
+      gkX = 250;
+      gkY = 300;
+      gkXVel = 0;
+      gkYVel = 0;
+      
+      document.getElementById("score").innerHTML = "Score: "+score;
+      
+      reset();
+      renderWorld();
+      renderBall();
+      detectKick();
+      
+      
+    }
+
+function replay(){
+
+  mx=0;
+  my=0;
+
+  kick = 0;
+  gkX = 250;
+  gkY = 300;
+  gkXVel = 0;
+  gkYVel = 0;
+  score = 0
+      reset();
+      renderWorld();
+      renderBall();
+      detectKick();
+
+}
+    
+    renderWorld();
+    reset();
+    renderBall();
+    detectKick();
+
+  
+  </script>
+  
+</body>
+</html>

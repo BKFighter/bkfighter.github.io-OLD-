@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="side-nav.js"></script>
+  <link rel="stylesheet" href="all-docs.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <title>Tilight</title>
+ 
+</head>
+  <body onload="navIn()">
+    
+    <h1 class="title">
+    Tilight
+  </h1>
+    <div id="nav-bar">
+      
+    </div>
+    <br /><br /><br />
+    <h2 class="important" id="score" text-align:center;align:center;height:40px;color:#37474F>
+    Click on the 'lit' square in the time alloted to win.<br />
+      <button id="go" onclick="countdown()" class="flat-btn">
+      Ready?
+    </button>
+  </h2>
+  
+
+    <div style="height:400px;width:90%;background-color:white;border:5px solid #2196F3;border-radius:1%;margin:0px;padding:0px;max-width:500px;margin:0 auto">
+    <button onclick="clicked(1)" id="1" style="background-color:white;width:33%;height:33%;border:0px;padding:0px;margin:0px">
+  </button>
+    <button onclick="clicked(2)" id="2" style="background-color:white;width:32.4%;height:33%;border:0px;padding:0px;margin:0px">
+  </button>
+    <button onclick="clicked(3)" id="3" style="background-color:white;width:33%;height:33%;border:0px;padding:0px;margin:0px">
+  </button>
+    <button onclick="clicked(4)" id="4" style="background-color:white;width:33%;height:31.9%;border:0px;padding:0px;margin:0px">
+    </button>
+    <button onclick="clicked(5)" id="5" style="background-color:white;width:32.4%;height:31.9%;border:0px;padding:0px;margin:0px">
+    </button>
+    <button onclick="clicked(6)" id="6" style="background-color:white;width:33%;height:31.9%;border:0px;padding:0px;margin:0px">
+    </button>
+    <button onclick="clicked(7)" id="7" style="background-color:white;width:33%;height:33%;border:0px;padding:0px;margin:0px">
+    </button>
+    <button onclick="clicked(8)" id="8" style="background-color:white;width:32.4%;height:33%;border:0px;padding:0px;margin:0px">
+    </button>
+    <button onclick="clicked(9)" id="9" style="background-color:white;width:33%;height:33%;border:0px;padding:0px;margin:0px">
+    </button>
+   
+    
+    <script>
+      
+      if(detectmob()){
+        
+        document.getElementById("score").innerHTML="Game is unavailable on this format. Please use a desktop to play.";
+        
+      }
+      
+      var litNum=0;
+      var game;
+      var score;
+      var solved;
+      var time;
+      var played=false;
+      
+      function countdown(){
+        if(litNum > 0){
+          
+   document.getElementById(litNum).style.backgroundColor="white";
+          
+        }
+      setTimeout(function(){ document.getElementById("score").innerHTML="3"; }, 1000);
+      setTimeout(function(){ document.getElementById("score").innerHTML="2"; }, 2000);
+      setTimeout(function(){ document.getElementById("score").innerHTML="1"; }, 3000);
+      setTimeout(function(){ document.getElementById("score").innerHTML="GO"; }, 4000);
+        setTimeout(function(){ document.getElementById("score").innerHTML="No points"; gamesetup(); }, 4500);
+      }
+        
+      
+        function gamesetup(){
+          
+          game=true;
+          solved=false;
+          score=0;
+          litNum=0;
+          time=0;
+          
+          
+          
+          
+            gameloop();
+          
+        }
+      
+        
+        function gameloop(){
+          
+          if(game){
+          solved=false;
+          litNum=Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+          litNum=litNum.toString();
+          time=(2/(score+1)+0.5)*1000;
+            
+          document.getElementById(litNum).style.backgroundColor="#FFFF00";
+            setTimeout(function(){ check(); }, time);
+        }else{
+         
+          document.getElementById("score").innerHTML="Game Over at: "+score+".";
+          
+        }
+          
+        }
+        
+        function clicked(number){
+          
+          if(number==litNum&&game){
+            if(!solved&&game){
+            score=score+1;
+            solved=true;
+              document.getElementById(litNum).style.backgroundColor="green";
+            }
+            
+          }else{
+            
+            game=false;
+            solved=false;
+            document.getElementById(litNum).style.backgroundColor="red";
+            
+          }
+          
+          if(game){
+          document.getElementById("score").innerHTML="Score: "+score+".";
+          }
+      }
+      
+      function check(){
+        
+        if(game&&solved){
+          
+          document.getElementById(litNum).style.backgroundColor="white";
+         gameloop(); 
+          
+        }else{
+          
+          document.getElementById("score").innerHTML="Game Over with score: "+score+".<br /><button id='go' onclick='countdown()' class='flat-btn'>Play again?</button>";
+          played=true;
+          game=false;
+          
+   document.getElementById(litNum).style.backgroundColor="red"; 
+          
+        }
+        
+      }
+      
+      function detectmob() { 
+        if( navigator.userAgent.match(/Android/i)
+           || navigator.userAgent.match(/webOS/i)
+           || navigator.userAgent.match(/iPhone/i)
+           || navigator.userAgent.match(/iPad/i)
+           || navigator.userAgent.match(/iPod/i)
+           || navigator.userAgent.match(/BlackBerry/i)
+           || navigator.userAgent.match(/Windows Phone/i)
+          ){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>

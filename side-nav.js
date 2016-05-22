@@ -59,15 +59,15 @@ function navOut(){
 }
 function outLp(){
   
-  length=length+25;
+  length=length+5;
   setTimeout(function(){ doneChc(); }, 10);
   
 }
 function doneChc(){
   
-  document.getElementById("nav-bar").style.height=length+"px";
+  document.getElementById("nav-bar").style.height=length+"%";
   
-  if(length<500&&sideBarSel){
+  if(length<100&&sideBarSel){
     
    outLp(); 
     

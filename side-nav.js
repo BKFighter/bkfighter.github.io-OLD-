@@ -59,7 +59,7 @@ function navOut(){
 }
 function outLp(){
   
-  length=length+5;
+  length=length+2.5;
   setTimeout(function(){ doneChc(); }, 10);
   
 }

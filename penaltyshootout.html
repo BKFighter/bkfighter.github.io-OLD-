@@ -273,10 +273,11 @@ function replay(){
       detectKick();
 
 }
-    if(!detectmod()){
+    
     renderWorld();
     reset();
     renderBall();
+    if(!detectmod()){
     detectKick();
     }else{
       document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";

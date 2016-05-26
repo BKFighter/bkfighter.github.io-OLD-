@@ -273,13 +273,23 @@ function replay(){
       detectKick();
 
 }
-    
+    if(!detectmod()){
     renderWorld();
     reset();
     renderBall();
     detectKick();
+    }else{
+      document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";
+    }
 
-  
+  function detectmob() { 
+        if(window.innerWidth<600||window.innerHeight<400){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
   </script>
   
 </body>

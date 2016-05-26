@@ -50,6 +50,7 @@
 
 
     function onMouseUpdate(e) {
+      if (!detectmob){
       if (!kick){
       kick = !kick
       mx = e.pageX-180;
@@ -61,6 +62,7 @@
       goalieLoop();
       ballLoop();
       
+      }
       }
     }
     

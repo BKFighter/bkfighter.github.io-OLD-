@@ -279,9 +279,9 @@ function replay(){
     renderWorld();
     reset();
     renderBall();
-    if(!detectmob()){
+    
     detectKick();
-    }else{
+    if(detectmob()){
       document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";
     }
 

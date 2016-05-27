@@ -51,7 +51,7 @@
 
     function onMouseUpdate(e) {
       
-      if (!kick){
+      if (!kick&&!detectmobile){
       kick = !kick
       mx = e.pageX-180;
       my = e.pageY;
@@ -274,13 +274,16 @@ function replay(){
       detectKick();
 
 }
-    
+
+var detectmobile = false;
+
     renderWorld();
     reset();
     renderBall();
     
     detectKick();
     if(detectmob()){
+      detectmobile = true;
       document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";
     }
 

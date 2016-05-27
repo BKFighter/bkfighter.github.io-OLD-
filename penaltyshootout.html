@@ -51,18 +51,25 @@
 
     function onMouseUpdate(e) {
       
-      if (!kick&&!detectmobile){
+      if (!kick){
       kick = !kick
       mx = e.pageX-180;
       my = e.pageY;
-        ballXVel = ((mx-250)+(Math.random()*60-30))/20;
-        ballYVel = ((my-380)+(Math.random()*60-30))/15;
+
+      setupKick();
+      
+      }
+    }
+    
+    function setupKick(){
+      
+      if(!detectmob())
+      ballXVel = ((mx-250)+(Math.random()*60-30))/20;
+      ballYVel = ((my-380)+(Math.random()*60-30))/15;
       ballZVel = -2;
       renderWorld();
       goalieLoop();
       ballLoop();
-      
-      }
     }
     
     
@@ -275,7 +282,7 @@ function replay(){
 
 }
 
-var detectmobile = false;
+
 
     renderWorld();
     reset();
@@ -283,7 +290,6 @@ var detectmobile = false;
     
     detectKick();
     if(detectmob()){
-      detectmobile = true;
       document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";
     }
 

@@ -91,3 +91,17 @@ function navIn(){
   document.getElementById("nav-bar").innerHTML="<h2 style='color:#37474F;position:fixed;left:20px;'>Nav</h2>";
   
 }
+function detectmob() { 
+  if( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ){
+      return true;
+    }else {
+      return false;
+    }
+  }

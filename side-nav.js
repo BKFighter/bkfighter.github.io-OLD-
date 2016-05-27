@@ -7,7 +7,21 @@ var length=30;
 
 document.addEventListener('mousemove', onMouseUpdate, false);
 document.addEventListener('mouseenter', onMouseUpdate, false);
+if (detectmob()){
+document.getElementById("nav-bar").addEventListener("click", mobNav);
+}
 
+function mobNav(){
+  
+  if(!sideBarSel){
+  navOut();
+  sideBarSel = !sideBarSel;
+  }else{
+  navIn();
+  sideBarSel = !sideBarSel;
+  }
+  
+}
 
 function onMouseUpdate(e) {
   x = e.pageX;
@@ -55,7 +69,7 @@ function navOut(){
   length=50;
   
   outLp();
-  
+
 }
 function outLp(){
   

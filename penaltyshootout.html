@@ -55,22 +55,19 @@
       kick = !kick
       mx = e.pageX-180;
       my = e.pageY;
-
-      setupKick();
-      
-      }
-    }
-    
-    function setupKick(){
-      
-      if(!detectmob())
       ballXVel = ((mx-250)+(Math.random()*60-30))/20;
       ballYVel = ((my-380)+(Math.random()*60-30))/15;
       ballZVel = -2;
       renderWorld();
       goalieLoop();
       ballLoop();
+      
+      }
     }
+    
+ 
+      
+  
     
     
     function renderWorld(){
@@ -283,15 +280,15 @@ function replay(){
 }
 
 
-
+  if(detectmob()){
+      document.getElementById("score").innerHTML = "It is recommended (but not required) that you use a larger screen.";
+    }
     renderWorld();
     reset();
     renderBall();
     
     detectKick();
-    if(detectmob()){
-      document.getElementById("score").innerHTML = "Game is unavailable on this format. Please use a larger window or desktop to play.";
-    }
+    
 
   function detectmob() { 
         if(window.innerWidth<600||window.innerHeight<400){

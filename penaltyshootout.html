@@ -19,7 +19,7 @@
     <br /><br />
 
   <h2 id="score" class="important" style="text-align:left;margin-left:160px;margin-right:160px">
-    Move mouse-pointer to aim, and click to shoot. The goalkeeper (red) will try to block your shot. Your shots will not be perfectly precise, and will take some time to find where it will aim, to emulate a real penalty shootout.
+    Mouse pointer to aim and click to shoot. The goalie (in red) will try to block your shots. Make sure that they don't go out of bounds!
   </h2>
 <br />
   <canvas id="game" width="500" height="500" style="border:1px solid #000000;margin-left:180px;margin-top:10px;border:5px solid #2196F3;border-radius:1%">
@@ -265,7 +265,7 @@ function replay(){
 
   mx=0;
   my=0;
-
+  document.getElementById("score").innerHTML = "Mouse pointer to aim and click to shoot. The goalie (in red) will try to block your shots. Make sure that they don't go out of bounds!";
   kick = 0;
   gkX = 250;
   gkY = 300;

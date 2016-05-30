@@ -47,7 +47,7 @@
     
     
     document.addEventListener('mousedown', onMouseUpdate, false);
-
+    document.addEventListener('touchstart', onTouchUpdate, false);
 
     function onMouseUpdate(e) {
       
@@ -65,6 +65,21 @@
       }
     }
     
+    function onTouchUpdate(e) {
+      
+      if (!kick){
+      kick = !kick
+      mx = e.pageX-180;
+      my = e.pageY;
+      ballXVel = ((mx-250)+(Math.random()*60-30))/20;
+      ballYVel = ((my-380)+(Math.random()*60-30))/15;
+      ballZVel = -2;
+      renderWorld();
+      goalieLoop();
+      ballLoop();
+      
+      }
+    }
  
       
   

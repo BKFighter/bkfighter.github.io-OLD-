@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="side-nav.js"></script>
+  <link rel="stylesheet" href="all-docs.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+  <title>BKFighter Home Page</title>
+ 
+</head>
+<body onload="navIn()">
+<div id="nav-bar"></div>
+<h1 class="title">Welcome to the BKFighter Website home page</h1><br />
+<br /><br /><h2 class="important" id="homeText" style="padding-left: 160px;padding-right: 160px">The license below is free to use with permission (as is). Please note it is only a template, and you will have to fill in your own info.</h2>
+
+
+<script>
+  
+  
+  
+  
+  function detectmob() { 
+  if( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ){
+      return true;
+    }else {
+      return false;
+    }
+  }
+  
+</script>
+
+</body>
+</html>

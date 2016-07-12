@@ -87,7 +87,7 @@ function doneChc(){
     
   }else{
    if(sideBarSel){
-    document.getElementById("nav-bar").innerHTML="<h2>Navigation</h2><a href='http://bkfighter.github.io/' class='nav-btn'>Home</a><h2>Games</h2><a href='http://bkfighter.github.io/tilight.html' class='nav-btn'>Tilight</a><br /><a href='http://bkfighter.github.io/penaltyshootout.html' class='nav-btn'>Penalty Shootout</a><br /><a href='http://bkfighter.github.io/scratch.html' class='nav-btn'>Scratch</a><h2>License Templates</h2><a href='http://bkfighter.github.io/bkfighterlicense.html'>BKFighter Template 1.0</a>";
+    document.getElementById("nav-bar").innerHTML="<h2>Navigation</h2><a href='http://bkfighter.github.io/' class='nav-btn'>Home</a><h2>Games</h2><a href='http://bkfighter.github.io/tilight.html' class='nav-btn'>Tilight</a><br /><a href='http://bkfighter.github.io/penaltyshootout.html' class='nav-btn'>Penalty Shootout</a><br /><a href='http://bkfighter.github.io/scratch.html' class='nav-btn'>Scratch</a><h2>License Templates</h2><a href='http://bkfighter.github.io/bkfighterlicense.html' class='nav-btn'>BKFighter Template 1.0</a>";
    }
     
     

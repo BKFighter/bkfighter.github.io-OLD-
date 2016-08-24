@@ -1,0 +1,4 @@
+ser-agent: *
+Disallow: /404.html
+Disallow: /README.md
+Disallow: /all-docs.css

@@ -1,5 +1,5 @@
 ErrorDocument 404 /404.html
 
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www\.example\.com$
-RewriteRule ^/?$ "http\:\/\/example\.com\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.bkfighter.github\.io$
+RewriteRule ^/?$ "http\:\/\/bkfighter.github\.io\/" [R=301,L]
